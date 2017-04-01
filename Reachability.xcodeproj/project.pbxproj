@@ -12,6 +12,7 @@
 		45440D101E8F5265008E48A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45440D0E1E8F5265008E48A4 /* Main.storyboard */; };
 		45440D121E8F5265008E48A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45440D111E8F5265008E48A4 /* Assets.xcassets */; };
 		45440D151E8F5265008E48A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45440D131E8F5265008E48A4 /* LaunchScreen.storyboard */; };
+		45440D1D1E8F528D008E48A4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45440D1C1E8F528D008E48A4 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		45440D111E8F5265008E48A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45440D141E8F5265008E48A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45440D161E8F5265008E48A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45440D1C1E8F528D008E48A4 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				45440D0A1E8F5265008E48A4 /* AppDelegate.swift */,
 				45440D0C1E8F5265008E48A4 /* ViewController.swift */,
+				45440D1C1E8F528D008E48A4 /* Reachability.swift */,
 				45440D0E1E8F5265008E48A4 /* Main.storyboard */,
 				45440D111E8F5265008E48A4 /* Assets.xcassets */,
 				45440D131E8F5265008E48A4 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				45440D0D1E8F5265008E48A4 /* ViewController.swift in Sources */,
 				45440D0B1E8F5265008E48A4 /* AppDelegate.swift in Sources */,
+				45440D1D1E8F528D008E48A4 /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V3KC6MFKNP;
 				INFOPLIST_FILE = Reachability/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dabus.tv.Reachability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V3KC6MFKNP;
 				INFOPLIST_FILE = Reachability/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dabus.tv.Reachability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
