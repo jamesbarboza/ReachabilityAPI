@@ -2,35 +2,37 @@
 //  ViewController.swift
 //  Reachability
 //
-//  Created by lsd on 4/1/17.
-//  Copyright © 2017 Dabus.tv. All rights reserved.
+//  Created by Leo Dabus on 2/9/19.
+//  Copyright © 2019 Dabus.tv. All rights reserved.
 //
 
     import UIKit
-
     class ViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
-            NotificationCenter.default.addObserver(self, selector: #selector(statusManager), name: .flagsChanged, object: Network.reachability)
+            NotificationCenter.default
+                .addObserver(self,
+                             selector: #selector(statusManager),
+                             name: .flagsChanged,
+                             object: nil)
             updateUserInterface()
         }
         func updateUserInterface() {
-            guard let status = Network.reachability?.status else { return }
-            switch status {
+            switch Network.reachability.status {
             case .unreachable:
                 view.backgroundColor = .red
-            case .wifi:
-                view.backgroundColor = .green
             case .wwan:
                 view.backgroundColor = .yellow
+            case .wifi:
+                view.backgroundColor = .green
             }
             print("Reachability Summary")
-            print("Status:", status)
-            print("HostName:", Network.reachability?.hostname ?? "nil")
-            print("Reachable:", Network.reachability?.isReachable ?? "nil")
-            print("Wifi:", Network.reachability?.isReachableViaWiFi ?? "nil")
+            print("Status:", Network.reachability.status)
+            print("HostName:", Network.reachability.hostname ?? "nil")
+            print("Reachable:", Network.reachability.isReachable)
+            print("Wifi:", Network.reachability.isReachableViaWiFi)
         }
-        func statusManager(_ notification: NSNotification) {
+        @objc func statusManager(_ notification: Notification) {
             updateUserInterface()
         }
     }
