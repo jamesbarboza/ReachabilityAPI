@@ -8,23 +8,54 @@
 
     import UIKit
     class ViewController: UIViewController {
+        
+        @IBOutlet var urlTextField: UITextField!
+        @IBOutlet var statusTextView: UITextView!
+        @IBOutlet var submitBtn: UIButton!
+        
+        
         override func viewDidLoad() {
             super.viewDidLoad()
+            submitBtn.addTarget(self, action: #selector(self.onSubmit(_:forEvent:)), for: .touchUpInside)
+        }
+        
+        @IBAction func onSubmit(_ sender: UIButton, forEvent event: UIEvent) {
             NotificationCenter.default
                 .addObserver(self,
                              selector: #selector(statusManager),
                              name: .flagsChanged,
                              object: nil)
             updateUserInterface()
+            
         }
+        
         func updateUserInterface() {
+            do {
+                let url: String = urlTextField.text!
+                try Network.reachability = Reachability(hostname: url)
+            }
+            catch {
+                switch error as? Network.Error {
+                case let .failedToCreateWith(hostname)?:
+                    print("Network error:\nFailed to create reachability object With host named:", hostname)
+                case let .failedToInitializeWith(address)?:
+                    print("Network error:\nFailed to initialize reachability object With address:", address)
+                case .failedToSetCallout?:
+                    print("Network error:\nFailed to set callout")
+                case .failedToSetDispatchQueue?:
+                    print("Network error:\nFailed to set DispatchQueue")
+                case .none:
+                    print(error)
+                }
+            }
+            
             switch Network.reachability.status {
             case .unreachable:
-                view.backgroundColor = .red
+                statusTextView.backgroundColor = .red
             case .wwan:
-                view.backgroundColor = .yellow
+                statusTextView.backgroundColor = .yellow
             case .wifi:
-                view.backgroundColor = .green
+                statusTextView.backgroundColor = .green
             }
             print("Reachability Summary")
             print("Status:", Network.reachability.status)
@@ -36,3 +67,11 @@
             updateUserInterface()
         }
     }
+
+extension ViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        urlTextField.becomeFirstResponder()
+        return true
+    }
+}
